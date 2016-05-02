@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8" />
+   
+
+   <link rel="stylesheet" href="css/resetstyle.css" />
+   <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+
+   <!--<link rel="stylesheet" type="text/css" media="only screen and (min-width:0px) and (max-width:520px)" href="css/mainStyleSmall.css">
+   <link rel="stylesheet" type="text/css" media="only screen and (min-width:521px) and (max-width:720px)" href="css/mainStyleSmallMed.css">-->
+   <link rel="stylesheet" type="text/css" media="only screen and (max-width:640px)" href="css/styleMobileSm.css">
+   <link rel="stylesheet" type="text/css" media="only screen and (min-width:641px) and (max-width:900px)" href="css/styleMobileMed.css">
+   <link rel="stylesheet" type="text/css" media="only screen and (min-width:901px)" href="css/styleMobileLarge.css">
+
+   <script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+   <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+   <script type="text/javascript" src="js/canvasjs.min.js"></script>
+   <script type="text/javascript" src="js/jquery-ui.js"></script>
+   <script type="text/javascript" src="js/pagescript.js"></script>
+
+   <style>
+       #chartContainer {
+           margin-left: -42px;
+           width: calc(100% + 32px);
+           height: 250px;
+       }
+       .canvasjs-chart-canvas {
+           width: calc(100% + 20px) !important;
+       }
+       .canvasjs-chart-canvas {
+           maring-left: -32px !important;
+           width: calc(100% + 32px);
+           margin-top: -11px;
+       }
+       .canvasjs-chart-credit {
+           display: none;
+       }
+       .ui-widget-header {
+           border: none;
+           background: none;
+       }
+       .ui-widget-content {
+           border: none;
+           border-top: 1px solid #f4f4f4;
+       }
+       .ui-handle-helper-parent {
+           border-bottom: 1px solid #F4F4F4;
+       }
+       .scroll-pane {
+           width: 100%;
+           float: left;
+       }
+       .scroll-bar-wrap {
+           clear: left;
+           padding: 30px 0 0 0;
+           width: 100%;
+           margin: -12px auto 0 auto;
+           background: #f9f9f9;
+           /* Old browsers */
+
+           background: -moz-linear-gradient(top, #f9f9f9 0%, #ffffff 100%, #a1dbff 100%);
+           /* FF3.6-15 */
+
+           background: -webkit-linear-gradient(top, #f9f9f9 0%, #ffffff 100%, #a1dbff 100%);
+           /* Chrome10-25,Safari5.1-6 */
+
+           background: linear-gradient(to bottom, #f9f9f9 0%, #ffffff 100%, #a1dbff 100%);
+           /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+           filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#a1dbff', GradientType=0);
+       }
+       .scroll-bar-wrap .ui-slider {
+           background: none;
+           border: 0;
+           height: 2em;
+           margin: 0 auto;
+           top: -19px;
+           width: 90%;
+       }
+       .scroll-bar-wrap .ui-handle-helper-parent {
+           position: relative;
+           width: 100%;
+           height: 50%;
+           margin: 0 auto;
+       }
+       .scroll-bar-wrap .ui-slider-handle {
+           top: .2em;
+           height: 25px;
+           width: 50px;
+           border-radius: 1em;
+       }
+       .ui-slider-handle .ui-state-default .ui-corner-all {
+           margin: -8px auto 0;
+           top: 50%;
+       }
+       .ui-state-default,
+       .ui-widget-content .ui-state-default,
+       .ui-widget-header .ui-state-default {
+           border: none;
+           background-color: #c2cbd2;
+           font-weight: normal;
+           color: #555555;
+       }
+       .noUi-horizontal .noUi-handle {
+           width: 34px;
+           height: 28px;
+           left: 17px;
+           /* top: -10px; */
+       }
+       .noUi-handle:after,
+       .noUi-handle:before {
+           content: "";
+           display: block;
+           position: absolute;
+           height: 12px;
+           width: 3px;
+           background: #e6eaed;
+           left: 50%;
+           top: 6px;
+       }
+       .noUi-handle:after {
+           left: calc(50% - 7px);
+       }
+       .noUi-handle:before {
+           left: calc(50% - 1px);
+       }
+       .verticalLines:after {
+           content: "";
+           display: block;
+           position: absolute;
+           height: 12px;
+           width: 3px;
+           background: #e6eaed;
+           left: calc(50% + 5px);
+           top: 6px;
+       }
+       .chart p {
+           padding-bottom: 5px;
+           margin-top: -20px;
+           font-size: 0.8em;
+           font-family: SFDThin, arial;
+       }
+       .toolTipContainer {
+           boredr: 10px solid blue;
+           padding-right: 13px;
+           display: inline-block;
+           background-color: #53BBB3;
+       }
+       .toolTipInfoIcon {
+           border: 1px solid red;
+           padding: 5px;
+           background-color: blue;
+           margin-right: 10px;
+           border-radius: 100px;
+       }
+   </style>
+    
+</head>
+<body>
+   <div class="mainContainer">
+      <nav class="mainNav">
+         <div class="mobileButton"><span class="mobileButtonIcon">|||</span></div>
+         <ul>
+            <li>Apps</li>
+            <li>Gadgets</li>
+            <li>Science</li>
+            <li>Nature</li>
+            <li>Creative</li>
+         </ul>
+      </nav>
+      <div class="cover"></div>
+      <div class="container">
+         <header>
+            <div class="logo">m<sup>02</sup></div>
+            <div class="headTrialBuyNow">
+               <p>Get free trial</p>
+               <button type="button" class="hollowButton">Buy Now</button>
+            </div>
+         </header>
+         <div class="infoTagline">
+            <h2>Share your Files with Ease</h2>
+            <p style="font-size: 1.5em">We push ourselves to new levels of inspired excellence with each project and we sweat creativity.</p>
+            <button type="button" class="hollowButton">Buy Now <span class="separator"></span> 	&euro;23</button>
+         </div>
+         <div class="chart">
+            <div class="scroll-pane ui-widget ui-widget-header ui-corner-all">
+               <div id="chartContainer"></div>
+               <div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
+                  <div class="scroll-bar"></div>
+                  <p>Drag to time travel</p>
+               </div>
+            </div>
+         </div>
+         <div class="creativeTagline">
+            <h3>We push ourselves to new levels of inspired excellence with each project and we sweat creativity. You won't see anything until we're done drooling at the result.</h3>
+            <button type="button" class="creativeTaglineButton">Buy now for $23</button>
+         </div>
+         <div class="testimonials" id="testimonials">
+            <div class="circleButton"></div>
+            <div id="slides">
+               <div class="slide">
+                  <div class="slideContents">
+                     <div class="imageHolder"><img src="images/irina.png"  class="authorPicture" alt="image01" /></div>
+                     <div class="authorContainer">     
+                        <h3 class="authorInsert">"Just started using awesome Module. Great way to boost the hard designing or prototyping process. Also a perfect tool for create studios and freelancers"</h3>
+                        <p class="author">Irina Bykova</p>
+                        <p class="authorAbout">Photographer, works with Slack team</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="slide">
+                  <div class="slideContents" height="700">
+                     <div class="imageHolder"><img src="images/irina.png"  class="authorPicture" alt="image01" /></div>
+                     <div class="authorContainer">     
+                        <h3 class="authorInsert">"Just started using awesome Module. Great way to boost the hard designing or prototyping process. Also a perfect tool for create studios and freelancers"</h3>
+                        <p class="author">Irina Bykova</p>
+                        <p class="authorAbout">Photographer, works with Slack team</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="licensePurchase">
+            <h2>Choose Your License</h2>
+            <div class="priceTable">
+               <ul>
+                  <li>
+                     <h3>Personal</h3>
+                     <p>Just started using awesome Module. Great way to boost the hard designing or prototyping process</p>
+                     <hr>
+                     <div class="priceInfo">
+                        <h2 class="price free">Free</h3>
+                        <p class="priceAbout">Per month billed anually or $250 from month to month</p>
+                     </div>
+                     <button type="button">Get it</button>
+                  </li>
+                  <li class="selected">
+                     <div id="outer"><span class="toSerif">i</span><div id="inner">&nbsp;</div></div>
+                     <h3>Agency</h3>
+                     <p>Also a perfect tool for creative studios and freelances</p>
+                     <hr>
+                     <div class="priceInfo">
+                        <h2 class="price"><sup>$</sup>123</h3>
+                        <p class="priceAbout">Per month billed anually or $250 from month to month</p>
+                     </div>
+                     <button type="button">Buy Now</button>
+                  </li>
+                  <li>
+                     <h3>Unlimited</h3>
+                     <p>Living in today's metropolitan world of cellular phones, mobile computers</p>
+                     <hr>
+                     <div class="priceInfo">
+                        <h2 class="price"><sup>$</sup>232</h3>
+                        <p class="priceAbout">Per month billed anually for or $250 from month to month</p>
+                     </div>
+                     <button type="button">Buy Now</button>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="emailSection">
+            <h2>Become One of Us</h2>
+            <p>Module 01 is big, styling and handy UI Kit, full of<br> many useful elements</p>
+            <form action="email.php">
+              <input type="email" name="email" placeholder="E-mail address" class="emailInput emailInputAndButton">
+              <input type="submit" class="emailButton emailInputAndButton" value="Let's Chat">
+            </form>
+         </div>
+         <footer>
+            <div class="imageContainer">
+               <img src="images/footerIcon.png" alt="Cube">
+            </div>
+            <div id="footerNav">
+               <ul>
+                  <li>Apps</li>
+                  <li>Gadgets</li>
+                  <li>Science</li>
+                  <li>Nature</li>
+                  <li>Creative</li>
+               </ul>
+            </div>
+            <span class="copyright"><p>&copy; 2016 Great Simple</p></span>
+         </footer>
+      </div>
+   </div>
+   
+
+<script type="text/javascript" src="js/Slides-SlidesJS-3/source/jquery.slides.js"></script>
+
+<body>
+</html>

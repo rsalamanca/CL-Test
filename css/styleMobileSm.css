@@ -1,0 +1,573 @@
+ body {
+     background-color: #fff;
+     font-family: SFDRegular, arial;
+     color: #43484d;
+ }
+ h2 {
+     font-size: 2.9em;
+     padding: 10px 0;
+     letter-spacing: -1px;
+ }
+ h3 {
+     font-size: 2em;
+     padding: 10px;
+     line-height: 46px;
+ }
+ p {
+     padding: 10px;
+     color: #86939E;
+ }
+ button,.emailButton {
+     background-color: #7DC855;
+     border-style: none;
+     border-radius: 5px;
+     color: #ffffff;
+     padding:10px;
+     font-size:1.3em;
+     width:100%;
+     height:80px;
+     transition: background 0.5s, color 0.5s, border 0.5s;
+     outline: none;
+ }
+ button:hover, .emailButton:hover {
+     background-color: #ffffff;
+     color: #7DC855;
+     border:1px solid #7DC855;
+     transition: background 0.5s, color 0.5s, border 0.5s;
+ }
+ div {
+     text-align: center;
+ }
+ sup {
+     font-size: 0.5em;
+     vertical-align: super;
+ }
+
+ .mainContainer{
+    position:relative;
+ }
+ .container{
+    background-color:#fff;
+ }
+ header {
+     overflow: auto;
+     width: 100%;
+     margin: 0 auto;
+     padding: 20px 0;
+ }
+ .logo {
+     font-size: 3em;
+     color: #86939E;
+     padding-bottom:30px;
+ }
+ .logo sup {
+     font-size: 0.3em;
+ }
+ .headTrialBuyNow {
+     position: relative;
+     overflow: auto;
+ }
+ .headTrialBuyNow p {
+     color: #86939e;
+     font-weight: bold;
+     font-size:1.5em;
+ }
+ .headTrialBuyNow button {
+     margin:20px 0;
+ }
+ .mainNav {
+     margin-left: -5px;
+     width: 300px;
+     padding: 0;
+     position:absolute;
+     top:0;
+     left:-310px;
+     height:100%;
+     z-index: 99999;
+     background-color:#86939E;
+     box-shadow: 2px 2px 10px #000;
+     color:#E6E9EB;
+ }
+ .mainNav ul {
+     width: 100%;
+     text-align: center;
+ }
+ .mainNav ul li {
+     margin-left: -5px;
+     text-align: center;
+     padding: 20px 0;
+     font-size:2em;
+ }
+ .mainNav ul li:first-child {
+     margin-left: 0px;
+ }
+ .mobileButton{
+     float:right;
+     background: #86939E;
+     border-bottom-right-radius: 10px;
+     color: #E6E9EB;
+     font-size: 20px;
+     padding: 20px 10px 20px 30px;
+     text-decoration: none;
+     margin-right:-60px;
+     letter-spacing: 5px;
+     margin-top:-2px;
+     font-weight:bold;
+  }
+ .mobileButton:hover {
+  color: #000;
+ }
+ .mobileButtonIcon {
+    display:inline-block;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg); /* Standard syntax */  
+ }
+ .cover{
+    display:none;
+    height:100%;
+    width:100%;
+    background-color: rgba(0,0,0,0);
+    filter:blur(5px);
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:99998;
+ }
+ .infoTagline p {
+     width: 60%;
+     font-size: 1em;
+     padding: 20px 0 70px 0;
+     line-height: 32px;
+     margin: 0 auto;
+ }
+ .hollowButton {
+     background-color: #fff;
+     color: #8f9ba5;
+     border: 2px solid #e1e8ee;
+     height: 80px;
+     padding: 10px 20px;
+     width:90%;
+ }
+ .hollowButton:hover {
+     border-width: 2px;
+ }
+ .hollowButton .separator {
+     margin: 0 10px;
+     border-left: 1px solid #e1e8ee;
+     width: 1px;
+     background-color: #e1e8ee;
+ }
+ .chart {
+     padding: 70px 0;
+     display:none;
+ }
+ .ini {
+     width: 100%;
+ }
+ .creativeTagline {
+     clear: both;
+     width: 80%;
+     margin: 0 auto;
+     padding: 100px 0;
+ }
+ .creativeTagline h3 {
+     font-size: 1.8em;
+     padding-bottom: 20px;
+ }
+ .creativeTaglineButton {
+     padding:10px 20px;
+ }
+ .testimonials{
+       border-top: 1px solid #979797;
+ }
+ .circleButton{
+    background:url("../images/arrowDown.png");
+    background-color:#fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    width:50px;
+    height:50px;
+    border-radius:100px;
+    margin:0 auto;
+    box-shadow: 0px 0px 15px grey;
+    transition: background 0.5s;
+ }
+ .circleButton:hover{
+    background:url("../images/arrowHoverDown.png");
+    background-color:#5e6977;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background 0.5s;
+ }
+ .slideContents {
+     height: 100%;
+     padding: 20px 0 20px;
+     margin: auto 0;
+     text-align: left;
+     left: 0;
+     overflow: auto;
+ }
+ #slides {
+     position: relative !important;
+     height: auto !important;
+ }
+ .slidesjs-container{
+    position: relative;
+    overflow: hidden;
+    width: 100% !important;
+    height: 100% !important;
+ }
+ .slidesjs-control{
+    position: relative;
+    width: auto !important;
+    height:100% !important;
+ }
+ .slide.slidesjs-slide{
+     height: auto !important;
+     position:relative !important;
+     /*height: initial !important;*/
+ }
+ .slidesjs-previous,
+ .slidesjs-next {
+     position: absolute;
+     top: 0;
+     right: 70px;
+     z-index: -100;
+     width: 16px;
+     height: 28px;
+     background: url('../images/arrowRight.png') no-repeat;
+     background-size: cover;
+ }
+ .slidesjs-next:hover {
+     background: url('../images/arrowHoverRight.png') no-repeat;
+     background-size: cover;
+ }
+ .imageHolder {
+     width: 100%;
+     margin:0 auto;
+ }
+ .imageHolder img {
+     max-height: 200px;
+ }
+ .authorContainer {
+     width: 100%;
+ }
+ .slideContents p.authorInsert,
+ .slideContents p.author,
+ .slideContents p.authorAbout {
+     position: relative;
+     height: auto;
+     font-style: normal;
+ }
+ .authorInsert {
+     font-size: 1.5em;
+     line-height: 1.5em;
+     color: #43484C;
+ }
+ p.author {
+     font-size: 1em;
+     color: #43484D;
+     padding-bottom:0;
+ }
+ p.authorAbout {
+     width: 200px;
+     color: #86939E;
+     font-size: .9em;
+    margin:0 auto;
+    padding-top:0;
+ }
+ p.author, p.authorAbout {
+     font-family: SFDThin, arial;
+     letter-spacing: 1px;
+     line-height: 25px;
+ }
+ .licensePurchase {
+     background-color: #F4F4F4;
+     padding: 70px 0 50px 0;
+ }
+ .priceTable {
+     width: 80%;
+     margin: 50px auto 0 auto;
+     overflow: auto;
+     padding-bottom: 5px;
+     height: auto;
+ }
+ .priceTable p {
+     font-family: SFDThin, arial;
+     line-height: 25px;
+ }
+ .priceTable .selected {
+     border: 2px solid rgba(53,142,215,0.21);
+     position: relative;
+ }
+ .toSerif {
+     font-family: serif;
+ }
+ #outer {
+     position: absolute;
+     width: 70px;
+     height: 50px;
+     top: 0px;
+     right: 0px;
+     overflow: hidden;
+     border-radius: 3px;
+     z-index: 1
+ }
+ #inner {
+     transform: rotate(45deg);
+     -ms-transform: rotate(45deg);
+     -webkit-transform: rotate(45deg);
+     -o-transform: rotate(45deg);
+     -moz-transform: rotate(45deg);
+     background-color: #eaf3fb;
+     width: 50px;
+     height: 50px;
+     top: -25px;
+     left: 50px;
+     position: relative;
+ }
+ #outer span {
+     position: absolute;
+     right: 7px;
+     top: 2px;
+     z-index: 2;
+     color: #86939e;
+     font-style: italic;
+ }
+ .priceTable ul {
+     width: 100%;
+    overflow: auto;
+    height:auto;
+    position: relative;
+    padding-bottom:5px;
+ }
+ .priceTable ul li {
+     width: calc(100% - 62px);
+     padding: 30px;
+     background-color: #ffffff;
+     border-radius: 5px;
+     box-shadow: 1px 1px 4px #cccccc;
+     overflow: auto;
+     border-top: 0px solid #fff;
+       border-bottom: 0px solid #fff;
+     height:auto;
+     transition:border-top 0.5s, border-bottom 0.5s;   
+ }
+ .priceTable ul li:hover{
+     border-top: 20px solid rgba(53,142,215,0.21);
+         border-bottom: 20px solid rgba(53,142,215,0.21);
+
+     transition:border-top 0.5s, border-bottom 0.5s;   
+ }
+ .priceTable ul li:first-child,
+ .priceTable ul li:last-child {
+     display: inline-block; /* pesky older IE */
+     padding: 30px;
+     background-color: #ffffff;
+     border-radius: 5px;
+     box-shadow: 1px 1px 4px #cccccc;
+     overflow: auto;
+     float:left;
+     margin-top:20px;
+ }
+@media (max-width: 685px) {
+ .priceTable ul li:first-child .priceAbout,
+ .priceTable ul li:last-child .priceAbout{
+    height:90px;
+ }
+}
+ .priceTable ul li:nth-child(2) {
+    float: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:calc(100% - 66px);
+ }
+ .priceTable hr {
+     width: calc(100% + 59px);
+     margin-left: -30px;
+     height: 0px;
+     border: none;
+     border-bottom: 1px solid #CECACA;
+ }
+
+ .priceInfo {
+     width:100%;
+     overflow: auto;
+     height:auto;
+ }
+ .price {
+     color: #000000;
+     position: relative;
+     width:auto;
+ }
+ .price sup{
+    color:#50555B;
+ }
+ .price.free {
+     color: #7DC855;
+ }
+ .priceAbout{
+    overflow:auto;
+    line-height: 20px;
+    width:166px;
+    width:100% !important;  
+    margin: auto;
+    text-align: center;
+ }
+ .priceAbout{
+    padding:20px 0;
+ } 
+ .priceTable button {
+     clear: both;
+     width: 100%;
+     height: 50px;
+ }
+ .emailSection {
+     text-align: center;
+     width: 80%;
+     margin: 0 auto;
+     padding: 50px 0;
+ }
+ .emailSection p {
+     line-height: 32px;
+ }
+ .emailInput {
+     height: 60px;
+     width: calc(100% - 50px);
+     padding: 5px 0 5px 40px;
+     border: 2px solid #E1E8EE;
+     border-radius: 5px;
+     background: url('../images/emailIcon.png');
+     background-repeat: no-repeat;
+     background-size: 20px 20px;
+     background-position: 10px center;
+     z-index: 1;
+ }
+ .emailInput[type=text] {
+     color: #86939E;
+     font-size:1.3em;
+ }
+ .emailButton {
+     clear: both;
+     margin-left: -3px;
+     width: 100%;
+     height: 34px;
+     border-style: none;
+     border-radius: 5px;
+     height: 34px;
+     color: #ffffff;
+     z-index: 2;
+ }
+ .emailInput,
+ .emailButton {
+     margin-top: 20px;
+ }
+ footer {
+     background-color: #86939E;
+     width: 100%;
+     color: #E6E9EB;
+     clear: both;
+     padding: 10px 0;
+     font-family: SFDThin, arial;
+     letter-spacing: 1px;
+     clear:both;
+ }
+ footer > * {
+     height: 100%;
+    margin:0 auto;
+ }
+ .imageContainer{
+    padding-top:20px;
+    height:auto !important;    
+ }
+ footer img{
+     width:50px; 
+ }
+ #footerNav {
+     margin:0 auto;
+     width: 50%;
+     padding: 0;
+     height: auto !important;
+ }
+ #footerNav ul {
+     width: 100%;
+     text-align: center;
+ }
+ #footerNav ul li {
+     display: inline-block;
+     margin-left: -5px;
+     text-align: center;
+     padding: 20px;
+ }
+ #footerNav ul li:first-child {
+     margin-left: 0px;
+ }
+ .copyright {
+     text-align: center;
+    clear:both;
+ }
+ .copyright p {
+     color: #E6E9EB;
+     font-size:0.7em;
+ }
+ .tooltips {
+     position: absolute;
+     color: #fff;
+     box-shadow: 1px 1px 4px #cccccc;
+ }
+ .circleInfo {
+     display: inline-block;
+     padding: 2px 8px;
+     border-radius: 50%;
+     height: auto;
+     width: auto;
+     margin-right: 10px;
+     background-color: #64c1ba;
+     border: 2px solid #75c7c1;
+ }
+ .jan {
+     padding: 20px;
+     background-color: #838CC7;
+     color: #fff;
+     border-radius: 10px;
+     top: 0px;
+     left: -100%;
+     z-index: 1;
+ }
+ .jan h3 {
+     padding: 0;
+ }
+ @font-face {
+     font-family: SFDBold;
+     src: url(fonts/YosemiteSanFranciscoFont/System_San_Francisco_Display_Bold.ttf);
+ }
+ @font-face {
+     font-family: SFDRegular;
+     src: url(fonts/YosemiteSanFranciscoFont/System_San_Francisco_Display_Regular.ttf);
+ }
+ @font-face {
+     font-family: SFDThin;
+     src: url(fonts/YosemiteSanFranciscoFont/System_San_Francisco_Display_Thin.ttf);
+ }
+ @font-face {
+     font-family: SFDUltrathin;
+     src: url(fonts/YosemiteSanFranciscoFont/System_San_Francisco_Display_Ultrathin.ttf);
+ }
+ @font-face {
+     font-family: SFDTBoldItalic;
+     src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_BoldItalic.ttf);
+ }
+ @font-face {
+     font-family: SFDTMedium;
+     src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_Medium.ttf);
+ }
+ @font-face {
+     font-family: SFDTMediumItalic;
+     src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_MediumItalic.ttf);
+ }
+ @font-face {
+     font-family: SFDTRegularItalic;
+     src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_RegularItalic.ttf);
+ }
