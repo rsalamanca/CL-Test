@@ -62,6 +62,10 @@ function verticalLineChart(arrayDataPoints, canvasChart) {
    var axisX = [];
    var dataInsert = [];
 
+   /*For each datapoint we're creating a line chart that only covers 1 point.
+   This will create the illusuion of the verical lines that reaches the original point
+   and the bottom of the chart.
+   This plugin doesn't support that feature and this is the only work around*/
    for (var i = 0; i < arrayDataPoints.length; i++) {
       axisX[i] = arrayDataPoints[i].x;
       dataInsert[i] = {
@@ -114,6 +118,10 @@ $(document).ready(function() {
    var viewportMax = 11;
    var currentPos = 0;
 
+   //Chart Scroll Variables
+   var scrollPane = $(".scroll-pane");
+   var position = 0;
+   
 //Get information from JSON
 $.ajax({
    url: "chart.json",
@@ -216,15 +224,13 @@ var chart = new CanvasJS.Chart("chartContainer", {
       dataPoints: dataPointsValue
    }]
 });
-//END OF CANVASJS PLUGIN
 
 verticalLineChart(chart.options.data[1].dataPoints, chart);
-
 chart.render();
+//END OF CANVASJS PLUGIN
 
-var scrollPane = $(".scroll-pane");
-var position = 0;
 
+//START OF CHART SCROLL BAR
 var scrollbar = $(".scroll-bar")
    .slider({
       range: 'min',
@@ -255,9 +261,8 @@ var scrollbar = $(".scroll-bar")
    });
 
 var handleHelper = scrollbar.find(".ui-slider-handle").append("<span class='ui-icon ui-icon-grip-dotted-vertical noUi-handle'><span class='verticalLines'>lorem</span></span>").wrap("<div class='ui-handle-helper-parent'></div>").parent();
-
 scrollPane.css("overflow", "hidden");
-
+//END OF CHART SCROLL BAR
    
    $("#slides").slidesjs({
       width: 940,
