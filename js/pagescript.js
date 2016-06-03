@@ -267,36 +267,24 @@ $(document).ready(function() {
    ///////////////////////////
    //END OF CHART SCROLL BAR//
    ///////////////////////////
+      
+   $('.circleButton').css({
+      marginTop: -($('.circleButton').height() / 2)
+   });
+
+   $('.circleButton').click(function(){
+      $("html, body").animate({scrollTop:$('.testimonials').offset().top});
+   });
    
-   //START OF SLIDER PLUGIN
+   sameHeight($('.emailInput'), $('.emailButton'));
+
+   $('.priceTable li>p:first-of-type').height(maxNumberElement($('.priceTable li>p:first-of-type')));
+
+   verticalAlignThis($('.price'));
+   verticalAlignThis($('.imageContainer img'));
+   verticalAlignThis($('.copyright p'));
    
-   $("#slides").slidesjs({
-      width: 940,
-      height: 500,
-      pagination: {
-         active: false,
-      },
-      play: {
-         auto: false,
-         pauseOnHover: true
-      },
-      effect: {
-         slide: {
-            speed: 5000
-         }
-      },
-   });
-
-   $('.slidesjs-previous').ready(function() {
-      $('.slidesjs-previous').html("<div class='leftNav'></div>");
-      $('.slidesjs-next').html("<div class='rightNav'></div>");
-   });
-
-   $(window).load(function() {
-      maxHeightSlides = maxNumberElement($('.slideContents'));
-      verticalAlignThis($('.slidesjs-navigation'));
-   });
-
+   //START OF MOBILE BUTTON 
    $('.mobileButton').click(function() {
       if (parseInt($('.mainNav').css('left')) == (-310)) {
          $('.mainNav').animate({
@@ -318,29 +306,9 @@ $(document).ready(function() {
          }, 0);
       }
    });
-   
-   $('.circleButton').css({
-      marginTop: -($('.circleButton').height() / 2)
-   });
-
-   $('.circleButton').click(function(){
-      $("html, body").animate({scrollTop:$('.testimonials').offset().top});
-   });
-   
-   sameHeight($('.emailInput'), $('.emailButton'));
-
-   $('.priceTable li>p:first-of-type').height(maxNumberElement($('.priceTable li>p:first-of-type')));
-
-   verticalAlignThis($('.price'));
-   verticalAlignThis($('.imageContainer img'));
-   verticalAlignThis($('.copyright p'));
+   //END OF MOBILE BUTTON
    
    if ((windowWidth <= 900) && (windowWidth > 641)) {
-      //$('.testimonials>div').attr("id","slides").attr("style");
-      $('#slides>div').attr("class", "slidesjs-container");
-      $('.slidesjs-container>div').attr("class", "slidesjs-control");
-      $('slidesjs-control>div').removeAttr("class", "slide slidesjs-slide");
-      //$('.slides').removeAttr( "class style" );
 
       $('.priceTable ul li:nth-child(2)').children('p').css({
          height: 'auto'
@@ -350,7 +318,6 @@ $(document).ready(function() {
       });
       
       var heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
-
 
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
@@ -365,11 +332,6 @@ $(document).ready(function() {
          marginTop: 0
       });
    } else if (windowWidth <= 640) {
-	   
-      $('.slidesjs-container').removeAttr("class style");
-      $('.slidesjs-control').removeAttr("class style");
-      $('.slide.slidesjs-slide').removeAttr("class style");
-      $('#slides *').removeAttr("style");
 
       $('.priceTable ul li:nth-child(2)').children('p').css({
          height: 'auto'
@@ -423,16 +385,9 @@ $(window).resize(function() {
          sameHeight($('.emailInput'), $('.emailButton'));
 
       verticalAlignThis($('.price'));
-      verticalAlignThis($('.slidesjs-navigation'));
       
    }
    else if ((windowWidth <= 900) && (windowWidth > 641)) {
-      //$('.testimonials>div').attr("id","slides").attr("style");
-      $('#slides>div').attr("class", "slidesjs-container");
-      $('.slidesjs-container>div').attr("class", "slidesjs-control");
-      $('slidesjs-control>div').removeAttr("class", "slide slidesjs-slide");
-      //$('.slides').removeAttr( "class style" );
-      verticalAlignThis($('.slidesjs-navigation'));
 
       var heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
       $('.priceTable ul li:nth-child(2)').children('p').css({
@@ -457,11 +412,6 @@ $(window).resize(function() {
          sameHeight($('.emailInput'), $('.emailButton'));
 
    } else if (windowWidth <= 640) {
-      //$('#slides').removeAttr( "id style" );
-      $('.slidesjs-container').removeAttr("class style");
-      $('.slidesjs-control').removeAttr("class style");
-      $('.slide.slidesjs-slide').removeAttr("class style");
-      $('#slides *').removeAttr("style");
 
       $('.priceTable ul li:nth-child(2)').children('p').css({
          height: 'auto'

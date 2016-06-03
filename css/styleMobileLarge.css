@@ -147,6 +147,7 @@
     margin:0 auto;
     box-shadow: 0px 0px 15px grey;
     transition: background 0.5s;
+	z-index:10;
  }
  .circleButton:hover{
     background:url("../images/arrowHoverDown.png");
@@ -176,62 +177,6 @@
      text-align: left;
 width: calc(100% - 130px);
      padding-top:10px;
- }
- #slides {
-     position: relative !important;
-     height: auto !important;
- }
- .slidesjs-container{
-    position: relative;
-    overflow: hidden;
-    width: 100% !important;
-    min-height:  541px;
-    max-height: 541px;
- }
- .slidesjs-control{
-    position: relative;
-    width: auto !important;
-    height: auto !important;
- }
- .slide.slidesjs-slide{
-     height: auto !important;
-
-     /*height: initial !important;*/
- }
- .slidesjs-previous {
-     position: absolute;
-     top: 0;
-     left: 70px;
-     z-index: 999999;
-     width: 16px;
-     height: 28px;
-     background: url('../images/arrowLeft.png') no-repeat;
-     background-size: cover;
- }
- .slidesjs-previous:hover {
-     background: url('../images/arrowHoverLeft.png') no-repeat;
-     background-size: cover;
- }
- .slidesjs-next {
-     position: absolute;
-     top: 0;
-     right: 70px;
-     z-index: 999999;
-     width: 16px;
-     height: 28px;
-     background: url('../images/arrowRight.png') no-repeat;
-     background-size: cover;
- }
- .slidesjs-next:hover {
-     background: url('../images/arrowHoverRight.png') no-repeat;
-     background-size: cover;
- }
- .slideContents p.authorInsert,
- .slideContents p.author,
- .slideContents p.authorAbout {
-     position: relative;
-     height: auto;
-     font-style: normal;
  }
  p.authorInsert {
      font-size: 1.8em;
@@ -329,11 +274,13 @@ width: calc(100% - 130px);
      transition:border-top 0.5s, border-bottom 0.5s;   
  }
  .priceTable ul li:hover{
-     border-top: 20px solid rgba(53,142,215,0.21);
-         border-bottom: 20px solid rgba(53,142,215,0.21);
+    box-shadow: 10px 10px 5px #888888;;
 
-     transition:border-top 0.5s, border-bottom 0.5s;   
+     transition:box-shadow 0.5s, border-bottom 0.5s;   
  }
+  .priceTable ul li:last-child{
+	       width: calc(32% - 70px);
+  }
 
  .priceTable ul li:nth-child(2) {
      margin: 0 calc(2% - 3px);
