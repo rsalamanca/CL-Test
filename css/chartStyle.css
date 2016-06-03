@@ -28,6 +28,7 @@
        .scroll-pane {
            width: 100%;
            float: left;
+		   overflow:hidden;
        }
        .scroll-bar-wrap {
            clear: left;

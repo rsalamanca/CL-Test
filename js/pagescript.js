@@ -104,8 +104,6 @@ function verticalAlignThis(alignThis) {
 
 $(document).ready(function() {
    var windowWidth = window.innerWidth;
-   //Slider Variables
-   var maxHeightSlides = 0;
 
    //Chart Variables
    var axisYValue = [];
@@ -119,120 +117,121 @@ $(document).ready(function() {
    var currentPos = 0;
 
    //Chart Scroll Variables
-   var scrollPane = $(".scroll-pane");
-   var position = 0;
+   var handleHelper = "";
    
-//Get information from JSON
-$.ajax({
-   url: "chart.json",
-   dataType: "text",
-   async: false,
-   success: function(data) {
-
-      var json = $.parseJSON(data);
-      for (var i = 0; i < json.numbers.length; i++) {
-         labelValue.push(json.numbers[i].month);
-         axisYValue.push(json.numbers[i].money);
-         axisXValue.push(i);
-      }
-	  //Temporarily store info so that the function only has to run once 
-      var tempDataPointInfo = jsonToDataPoints(axisXValue, axisYValue, labelValue);
-	  dataPointsCover = tempDataPointInfo[0];
-	  dataPointsValue = tempDataPointInfo[1];
-	  maxYAxis = tempDataPointInfo[2];
-   }
-});
-
-//START OF CANVASJS PLUGIN
-var chart = new CanvasJS.Chart("chartContainer", {
-   axisX: {
-      gridThickness: 0,
-      viewportMinimum: viewportMin,
-      viewportMaximum: viewportMax,
-      lineColor: "transparent",
-      tickColor: "transparent"
-   },
+   //Slider Variables
+   var maxHeightSlides = 0;
    
-   axisY: {
-      gridThickness: 0,
-      lineColor: "transparent",
-      tickColor: "transparent",
-      labelFontColor: "transparent",
-      maximum: (maxYAxis - 100)
-   },
-
-   toolTip: {
-      enabled: true,
-      fontColor: "#fff",
-      fontStyle: "normal",
-      cornerRadius: 100,
-      backgroundColor: "#53BBB3",
-      borderColor: "transparent",
-      markerBorderThickness: 0,
-      fillOpacity: 0,
-
-      contentFormatter: function(e) {
-         var content = " ";
-         for (var i = 0; i < e.entries.length; i++) {
-            content += "</div><div class='toolTipContainer'><div class='speechBubble'></div><span class='toSerif circleInfo'>i</span>" + e.entries[i].dataPoint.label + ", $" + e.entries[i].dataPoint.y + "</div>";
-            content += "<br/>";
+   //Get information from JSON
+   $.ajax({
+      url: "chart.json",
+      dataType: "text",
+      async: false,
+      success: function(data) {
+         var json = $.parseJSON(data);
+         for (var i = 0; i < json.numbers.length; i++) {
+            labelValue.push(json.numbers[i].month);
+            axisYValue.push(json.numbers[i].money);
+            axisXValue.push(i);
          }
-         return content;
+	     //Temporarily store info so that the function only has to run once 
+         var tempDataPointInfo = jsonToDataPoints(axisXValue, axisYValue, labelValue);
+	     dataPointsCover = tempDataPointInfo[0];
+	     dataPointsValue = tempDataPointInfo[1];
+	     maxYAxis = tempDataPointInfo[2];
       }
-   },
+   });
 
-   backgroundColor: "#F9F9F9",
+   //START OF CANVASJS PLUGIN
+   var chart = new CanvasJS.Chart("chartContainer", {
+      axisX: {
+         gridThickness: 0,
+         viewportMinimum: viewportMin,
+         viewportMaximum: viewportMax,
+         lineColor: "transparent",
+         tickColor: "transparent"
+      },
+
+      axisY: {
+         gridThickness: 0,
+         lineColor: "transparent",
+         tickColor: "transparent",
+         labelFontColor: "transparent",
+         maximum: (maxYAxis - 100)
+      },
+      backgroundColor: "#F9F9F9",
+
+      toolTip: {
+         enabled: true,
+         fontColor: "#fff",
+         fontStyle: "normal",
+         cornerRadius: 100,
+         backgroundColor: "#53BBB3",
+         borderColor: "transparent",
+         markerBorderThickness: 0,
+         fillOpacity: 0,
+
+         contentFormatter: function(e) {
+            var content = " ";
+            for (var i = 0; i < e.entries.length; i++) {
+			   //Added so that I can customize the tool tip with CSS
+               content += "</div><div class='toolTipContainer'><div class='speechBubble'></div><span class='toSerif circleInfo'>i</span>" + e.entries[i].dataPoint.label + ", $" + e.entries[i].dataPoint.y + "</div>";
+               content += "<br/>";
+            }
+            return content;
+         }
+      },
+
    
-   //Data from JSON file is sent through here and given these attributes
-   data: [{
-      //Top White Background
-      highlightEnabled: false,
-      type: "area",
-      color: "#ffffff",
-      fillOpacity: 1,
-      lineThickness: 0,
-      markerBorderColor: "#fff",
-      markerColor: "#e1e8ee",
-      markerSize: 0,
-      markerBorderThickness: 0,
-      tooltipContent: null,
+      //Data from JSON file is sent through here and given these attributes
+      data: [{
+         //To Produce White Background of Chart
+         highlightEnabled: false,
+         type: "area",
+         color: "#ffffff",
+         fillOpacity: 1,
+         lineThickness: 0,
+         markerBorderColor: "#fff",
+         markerColor: "#e1e8ee",
+         markerSize: 0,
+         markerBorderThickness: 0,
+         tooltipContent: null,
 
-      dataPoints: dataPointsCover
-   }, {
-      //Main Data
-      type: "line",
-      color: "#E1E8EE",
-      fillOpacity: 0.1,
-      lineThickness: 2,
-      markerBorderColor: "#ffffff",
-      markerColor: "#e1e8ee",
-      markerSize: 10,
-      markerBorderThickness: 2,
-      mouseover: onMouseover,
+         dataPoints: dataPointsCover
+      }, {
+         //Main Data Points
+         type: "line",
+         color: "#E1E8EE",
+         fillOpacity: 0.1,
+         lineThickness: 2,
+         markerBorderColor: "#ffffff",
+         markerColor: "#e1e8ee",
+        markerSize: 10,
+         markerBorderThickness: 2,
+         mouseover: onMouseover,
 
-      dataPoints: dataPointsValue
-   }, {
-      //Lower Line Background
-      type: "area",
-      color: "#F9F9F9",
-      fillOpacity: 1,
-      lineThickness: 2,
-      tooltipContent: null,
-      highlightEnabled: false,
-      markerSize: 0,
+         dataPoints: dataPointsValue
+      }, {
+      //Fill area of chart
+         type: "area",
+         color: "#F9F9F9",
+         fillOpacity: 1,
+         lineThickness: 2,
+         tooltipContent: null,
+         highlightEnabled: false,
+         markerSize: 0,
 
-      dataPoints: dataPointsValue
-   }]
-});
+         dataPoints: dataPointsValue
+      }]
+   });
 
-verticalLineChart(chart.options.data[1].dataPoints, chart);
-chart.render();
-//END OF CANVASJS PLUGIN
+   verticalLineChart(chart.options.data[1].dataPoints, chart);
+   chart.render();
+   //END OF CANVASJS PLUGIN
 
 
-//START OF CHART SCROLL BAR
-var scrollbar = $(".scroll-bar")
-   .slider({
+   //START OF CHART SCROLL BAR
+   var scrollbar = $(".scroll-bar").slider({
       range: 'min',
       min: 0,
       max: chart.options.data[0].dataPoints.length,
@@ -242,16 +241,18 @@ var scrollbar = $(".scroll-bar")
          currentPos = ui.value;
          chart.options.axisX.viewportMaximum = currentPos;
 
-         //slide down
+         //If statement so that the scroll wheel doesn't go below the first value.
          if (currentPos <= 5) {
-            console.log("REACHED END LOWER");
+            //console.log("REACHED END LOWER");
             chart.options.axisX.viewportMaximum = 12;
+         //If statement so that the scroll wheel doesn't go above the last value.
          } else if (chart.options.axisX.viewportMaximum >= (chart.options.data[0].dataPoints.length - 12)) {
-            console.log("REACHED END TOP");
+            //console.log("REACHED END TOP");
             chart.options.axisX.viewportMaximum = chart.options.data[0].dataPoints.length - 1;
             chart.options.axisX.viewportMinimum = chart.options.data[0].dataPoints.length - 12;
+         //If statement so that the scroll wheel will update the chart to the values in between.
          } else {
-            console.log("Working inbetween");
+            //console.log("Working inbetween");
             chart.options.axisX.viewportMinimum = currentPos - 6;
             chart.options.axisX.viewportMaximum = currentPos + 6;
          }
@@ -259,10 +260,15 @@ var scrollbar = $(".scroll-bar")
          chart.render();
       }
    });
+   
+   //Plugin code and inserted a class to show the vertical lines in the horizontal scroll bar for the chart
+   handleHelper = scrollbar.find(".ui-slider-handle").append("<span class='ui-icon ui-icon-grip-dotted-vertical noUi-handle'><span class='verticalLines'>lorem</span></span>").wrap("<div class='ui-handle-helper-parent'></div>").parent();
 
-var handleHelper = scrollbar.find(".ui-slider-handle").append("<span class='ui-icon ui-icon-grip-dotted-vertical noUi-handle'><span class='verticalLines'>lorem</span></span>").wrap("<div class='ui-handle-helper-parent'></div>").parent();
-scrollPane.css("overflow", "hidden");
-//END OF CHART SCROLL BAR
+   ///////////////////////////
+   //END OF CHART SCROLL BAR//
+   ///////////////////////////
+   
+   //START OF SLIDER PLUGIN
    
    $("#slides").slidesjs({
       width: 940,
@@ -359,7 +365,7 @@ scrollPane.css("overflow", "hidden");
          marginTop: 0
       });
    } else if (windowWidth <= 640) {
-      //$('#slides').removeAttr( "id style" );
+	   
       $('.slidesjs-container').removeAttr("class style");
       $('.slidesjs-control').removeAttr("class style");
       $('.slide.slidesjs-slide').removeAttr("class style");
