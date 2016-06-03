@@ -9,7 +9,7 @@
      letter-spacing: -1px;
  }
  h3 {
-     font-size: 2em;
+     font-size: 1.8em;
      padding: 10px;
      line-height: 46px;
  }
@@ -134,6 +134,7 @@
  }
  .testimonials{
        border-top: 1px solid #979797;
+	   position:relative;
  }
  .circleButton{
     background:url("../images/arrowDown.png");
@@ -163,9 +164,9 @@
      overflow: auto;
  }
  .imageHolder {
-     float: left;
+     float: left;/*
      width: 20%;
-     max-width: 130px;
+     max-width: 130px;*/
  }
  .imageHolder img {
      max-height: 130px;
@@ -173,7 +174,7 @@
  .authorContainer {
      float: left;
      text-align: left;
-     width: 80%;
+width: calc(100% - 130px);
      padding-top:10px;
  }
  #slides {
@@ -239,14 +240,18 @@
  }
  p.author {
      font-size: 1em;
-     color: #43484D ;
+     color: #43484D;
+	 padding-top:0px;
+	 padding-bottom:0px;
  }
  p.authorAbout {
      width: 200px;
      color: #86939E;
      font-size: .9em;
+	 padding-top:5px;
+	 padding-bottom:0px;
  }
- p.author, p.authorAbout {
+ p.authorAbout {
      font-family: SFDThin, arial;
      letter-spacing: 1px;
      line-height: 25px;

@@ -173,7 +173,7 @@
  .authorContainer {
      float: left;
      text-align: left;
-     width: 80%;
+     width: calc(100% - 130px);
      padding-top:10px;
  }
  #slides {

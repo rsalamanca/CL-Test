@@ -21,15 +21,17 @@
 
 #carousel {
   position: relative;
-  width: 100%;
+  width: 85%;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 
 #slidess {
   overflow: hidden;
   position: relative;
-  width: 90%;
+  width: 100%;
   height: auto;
+  margin:0 auto;
 }
 
 #slidess ul {
@@ -58,72 +60,43 @@
   width: 100%;
   margin: 0 auto;
   display: block;
-  position: relative;
-}
-
-#buttons {
-  padding: 0 0 5px 0;
+  position: absolute;
+  top:0;
 }
 
 #buttons a {
-  text-align: center;
   display: block;
-  font-size: 50px;
-
-  outline: 0;
-  margin: 0 60px;
-  color: #b14943;
   text-decoration: none;
-  display: block;
-  padding: 9px;
-  width: 35px;
+  
 }
 a#prev{
+margin-left:70px;
   float:left;
+    width: 16px;
+    height: 28px;
+    background: url('./images/arrowLeft.png') no-repeat;
+    background-size: cover;
+
 }
-a#next{float:right;}
-a#prev:hover,
+a#prev:hover{
+     background: url('./images/arrowHoverLeft.png') no-repeat;
+     background-size: cover;
+}
+a#next{
+margin-right:70px;
+float:right;
+    width: 16px;
+    height: 28px;
+    background: url('./images/arrowRight.png') no-repeat;
+    background-size: cover;
+}
 a#next:hover {
-  color: #FFF;
-  text-shadow: .5px 0px #b14943;
+     background: url('./images/arrowHoverRight.png') no-repeat;
+     background-size: cover;
 }
-
-.quote-phrase,
-.quote-author {
-  font-family: sans-serif;
-  font-weight: 300;
-  display: table-cell;
-  vertical-align: middle;
-  padding: 5px 20px;
-  font-family: 'Lato', Calibri, Arial, sans-serif;
-}
-
-.quote-phrase {
-  height: 200px;
-  font-size: 24px;
-  color: #FFF;
-  font-style: italic;
-  text-shadow: .5px 0px #b14943;
-}
-
-.quote-marks {
-  font-size: 30px;
-  padding: 0 3px 3px;
-  position: inherit;
-}
-
-.quote-author {
-  font-style: normal;
-  font-size: 20px;
-  color: #b14943;
-  font-weight: 400;
-  height: 30px;
-}
-
-.quoteContainer,
-.authorContainer {
-  display: table;
-  width: 100%;
+.slideContentContainer{
+  border:1px solid red; 
+  overflow:auto;
 }
 </style>
 </head>
@@ -191,12 +164,23 @@ a#next:hover {
                   </div>
                </div>
             </div>-->
-			<div id="carousel">
-  <div class="btn-bar">
-    <div id="buttons"><a id="prev" href="#"><</a><a id="next" href="#">></a> </div>
+			  <div class="btn-bar">
+    <div id="buttons"><a id="prev" href="#"></a><a id="next" href="#"></a> </div>
   </div>
+			<div id="carousel">
+
   <div id="slidess">
     <ul>
+      <li class="slide">
+	     <div class="slideContentContainer">
+                     <div class="imageHolder"><img src="images/irina.png"  class="authorPicture" alt="image01" /></div>
+                     <div class="authorContainer">     
+                        <h3 class="authorInsert">"Just started using awesome Module. Great way to boost the hard designing or prototyping process. Also a perfect tool for create studios and freelancers"</h3>
+                        <p class="author">Irina Bykova</p>
+                        <p class="authorAbout">Photographer, works with Slack team</p>
+                     </div>
+		 </div>
+      </li>
       <li class="slide">
                      <div class="imageHolder"><img src="images/irina.png"  class="authorPicture" alt="image01" /></div>
                      <div class="authorContainer">     
@@ -206,20 +190,12 @@ a#next:hover {
                      </div>
       </li>
       <li class="slide">
-        <div class="quoteContainer">
-          <p class="quote-phrase"><span class="quote-marks">"</span> I could not stop staring! Company A's Web Solutions are by far the most elegant solutions, you can't beat their quality and attention to detail! <span class="quote-marks">"</span> </p>
-        </div>
-        <div class="authorContainer">
-          <p class="quote-author">Andy Fakename // CEO: Andy's Camping Supplies</p>
-        </div>
-      </li>
-      <li class="slide">
-        <div class="quoteContainer">
-          <p class="quote-phrase"><span class="quote-marks">"</span>Carl Fakeguy, was the most helpful designer I've ever hired. He listened to my ideas and advised against things that could negatively affect my CEO. Company A is by far the most generous and helpful company, 5/5!<span class="quote-marks">"</span> </p>
-        </div>
-        <div class="authorContainer">
-          <p class="quote-author">Janice Falsename</p>
-        </div>
+                     <div class="imageHolder"><img src="images/irina.png"  class="authorPicture" alt="image01" /></div>
+                     <div class="authorContainer">     
+                        <h3 class="authorInsert">"Just started using awesome Module. Great way to boost the hard designing or prototyping process. Also a perfect tool for create studios and freelancers"</h3>
+                        <p class="author">Irina Bykova</p>
+                        <p class="authorAbout">Photographer, works with Slack team</p>
+                     </div>
       </li>
     </ul>
   </div>
