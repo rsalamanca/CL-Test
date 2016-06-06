@@ -22,20 +22,18 @@ function maxHeightOfElements(className) {
    className.each(function(){
       if ($(this).innerHeight() < highest){
          $(this).innerHeight(highest);
-		 	     alert('yes');
-
-	  }else{
-		  
-	     alert('no');
 	  }
    });
 }
 
 function verticalAlignThis(alignThis) {
-   console.log("Parent: " + alignThis.parent().height() + " This: " + alignThis.height());
-   alignThis.css({
-      marginTop: (alignThis.parent().height() - alignThis.height()) / 2
-   });
+  // console.log("Parent: " + alignThis.parent().height() + " This: " + alignThis.height());
+   for(var i = 0; i<alignThis.length; i++){
+      alignThis[i].css({
+         marginTop: (alignThis[i].parent().height() - alignThis[i].height()) / 2
+      });    
+	  i++;
+   }
 }
 
 function sameHeight(block1, block2) {
@@ -44,7 +42,6 @@ function sameHeight(block1, block2) {
    } else {
       block1.outerHeight(block2.outerHeight());
    }
-   console.log(block1.outerHeight() + " : " + block2.outerHeight());
 }
 
 function jsonToDataPoints(axisX, axisY, labelFormat) {
@@ -135,6 +132,9 @@ $(document).ready(function() {
    //Slider Variables
    var maxHeightSlides = 0;
    
+   //Price Table Variables
+   var heightFirstDiv = 0;
+   
    //Get information from JSON
    $.ajax({
       url: "chart.json",
@@ -195,7 +195,6 @@ $(document).ready(function() {
          }
       },
 
-   
       //Data from JSON file is sent through here and given these attributes
       data: [{
          //To Produce White Background of Chart
@@ -281,6 +280,11 @@ $(document).ready(function() {
    //END OF CHART SCROLL BAR//
    ///////////////////////////
       
+	  
+   //START OF TESTIMONIALS//
+   
+   
+   //CIRCLE CENTER BUTTON ON TESTIMONIALS
    $('.circleButton').css({
       marginTop: -($('.circleButton').height() / 2)
    });
@@ -288,6 +292,17 @@ $(document).ready(function() {
    $('.circleButton').click(function(){
       $("html, body").animate({scrollTop:$('.testimonials').offset().top});
    });
+   
+   $(window).load(function(){
+      $('.btn-bar').height($('#carousel').outerHeight());
+	     $('#buttons').css({
+      marginTop: $('#carousel').outerHeight()/2 - $('#buttons').outerHeight()/2
+   });
+   
+   });
+   
+   
+   //END OF TESTIMONIALS//
    
    //START OF MOBILE BUTTON 
    $('.mobileButton').click(function() {
@@ -313,13 +328,9 @@ $(document).ready(function() {
    });
    //END OF MOBILE BUTTON
    	   
-   verticalAlignThis($('.price'));
-   verticalAlignThis($('.imageContainer img'));
-   verticalAlignThis($('.copyright p'));
-   
    if ((windowWidth <= 900) && (windowWidth > 641)) {
 
-      var heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
+      heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
 
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
@@ -336,17 +347,23 @@ $(document).ready(function() {
          marginTop: heightFirstDiv
       });
    }
-   //sameHeight($('.emailInput'), $('.emailButton'));
-
+   
+   verticalAlignThis([$('.price'),$('.copyright p'),$('.imageContainer img')]);
+   sameHeight($('.emailInput'), $('.emailButton'));
 });
 
 $(window).resize(function() {
    var windowWidth = window.innerWidth;
-   //verticalAlignThis($('.copyright p')); 
+   var heightFirstDiv = 0;
+   
+   $('#slidess').width($('#carousel').width());
+   $('#slidess ul').css({left:$('#carousel').width()*(-1)});
+   $('#slidess ul').width($('#carousel').width()*$('.slide').length);
+   $('.slide').width($('#carousel').width());
 
-  if ((windowWidth <= 900) && (windowWidth > 640)) {
+   if ((windowWidth <= 900) && (windowWidth > 640)) {
 
-      var heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
+      heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
 
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
@@ -354,8 +371,8 @@ $(window).resize(function() {
       $('.priceTable ul li:last-child').css({
          marginTop: heightFirstDiv
       });
-
    } else if (windowWidth <= 640) {
+	   
       heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + 20;
 
       $('.priceTable ul li:first-child').css({
@@ -365,9 +382,8 @@ $(window).resize(function() {
       $('.priceTable ul li:last-child').css({
          marginTop: 20
       });
-
    }
    
-      //sameHeight($('.emailInput'), $('.emailButton'));
-
+   verticalAlignThis([$('.copyright p')]); 
+   sameHeight($('.emailInput'), $('.emailButton'));
 });

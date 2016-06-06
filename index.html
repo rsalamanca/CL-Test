@@ -20,16 +20,16 @@
    <style>
 
 #carousel {
-  position: relative;
-  width: 85%;
-  margin: 0 auto;
-  padding-bottom: 50px;
+    position: relative;
+    width: 75%;
+    margin: 0 auto;
+    padding: 50px 0px;
+    z-index: 999;
 }
 
 #slidess {
   overflow: hidden;
   position: relative;
-  width: 100%;
   height: auto;
   margin:0 auto;
 }
@@ -54,6 +54,10 @@
   font-family: lato, sans-serif;
 }
 
+.slide{
+   width:100%;
+}
+
 /* Styling for prev and next buttons */
 
 .btn-bar {
@@ -63,6 +67,9 @@
   position: absolute;
   top:0;
   z-index:1;
+}
+#buttons{
+   overflow:auto;
 }
 
 #buttons a {
@@ -96,7 +103,6 @@ a#next:hover {
      background-size: cover;
 }
 .slideContentContainer{
-  border:1px solid red; 
   overflow:auto;
 }
 </style>
@@ -243,15 +249,34 @@ a#next:hover {
    </div>
 <script type="text/javascript" src="js/Slides-SlidesJS-3/source/jquery.slides.js"></script>
 <script>
-$(document).ready(function () {
-    //rotation speed and timer
+
+function sliderIni(){
+//rotation speed and timer
     var speed = 150000;
     
     var run = setInterval(rotate, speed);
     var slides = $('.slide');
     var container = $('#slidess ul');
     var elm = container.find(':first-child').prop("tagName");
-    var item_width = container.width();
+    var item_width = $('#carousel').width();
+    var previous = 'prev'; //id of previous button
+    var next = 'next'; //id of next button
+    slides.width(item_width); //set the slides to the correct pixel width
+    container.parent().width(item_width);
+    container.width(slides.length * item_width); //set the slides container to the correct total width
+    container.find(elm + ':first').before(container.find(elm + ':last'));
+    resetSlides();
+}
+
+function sliderIni(){
+//rotation speed and timer
+    var speed = 150000;
+    
+    var run = setInterval(rotate, speed);
+    var slides = $('.slide');
+    var container = $('#slidess ul');
+    var elm = container.find(':first-child').prop("tagName");
+    var item_width = $('#carousel').width();
     var previous = 'prev'; //id of previous button
     var next = 'next'; //id of next button
     slides.width(item_width); //set the slides to the correct pixel width
@@ -260,7 +285,48 @@ $(document).ready(function () {
     container.find(elm + ':first').before(container.find(elm + ':last'));
     resetSlides();
     
+    $(window).resize(function () {
+	       item_width = $('#carousel').width();
+	       console.log("Before: " + item_width);
+		   
+		       $('#buttons a').click(function (e) {
+        //slide the item
+        
+        if (container.is(':animated')) {
+            return false;
+        }
+        if (e.target.id == previous) {
+            container.stop().animate({
+                'left': 0
+            }, 1500, function () {
+                container.find(elm + ':first').before(container.find(elm + ':last'));
+                resetSlides();
+            });
+        }
+        
+        if (e.target.id == next) {
+            container.stop().animate({
+                'left': item_width * -2
+            }, 1500, function () {
+                container.find(elm + ':last').after(container.find(elm + ':first'));
+                resetSlides();
+            });
+        }
+        
+        //cancel the link behavior            
+        return false;
+        
+    });
     
+    //if mouse hover, pause the auto rotation, otherwise rotate it    
+    container.parent().mouseenter(function () {
+        clearInterval(run);
+    }).mouseleave(function () {
+        run = setInterval(rotate, speed);
+    });
+	});
+		       console.log("after: " + item_width);
+
     //if user clicked on prev button
     
     $('#buttons a').click(function (e) {
@@ -306,7 +372,9 @@ $(document).ready(function () {
             'left': -1 * item_width
         });
     }
-    
+}
+$(document).ready(function () {
+    sliderIni();
 });
 //a simple function to click next link
 //a timer will call this function, and the rotation will begin
@@ -314,7 +382,6 @@ $(document).ready(function () {
 function rotate() {
     $('#next').click();
 }
-
 </script>
 <body>
 </html>

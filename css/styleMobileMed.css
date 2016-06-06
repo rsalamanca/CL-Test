@@ -460,7 +460,6 @@
  }
  .emailInput {
      float: left;
-     height: 34px;
      width: calc(70% - 40px);
      padding: 5px 0 5px 40px;
      border: 2px solid #E1E8EE;
@@ -480,10 +479,9 @@
      clear: both;
      margin-left: -3px;
      width: 30%;
-     height: 34px;
+     height: 44px;
      border-style: none;
      border-radius: 0 5px 5px 0;
-     height: 34px;
      color: #ffffff;
      z-index: 2;
  }
