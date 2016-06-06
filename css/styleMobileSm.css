@@ -369,8 +369,10 @@
      box-shadow: 1px 1px 4px #cccccc;
      overflow: auto;
      float:left;
-     margin-top:20px;
  }
+ .priceTable ul li:last-child {
+    margin-top:20px !important;
+}
 @media (max-width: 685px) {
  .priceTable ul li:first-child .priceAbout,
  .priceTable ul li:last-child .priceAbout{

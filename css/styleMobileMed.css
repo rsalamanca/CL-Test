@@ -379,6 +379,9 @@
      overflow: auto;
      float:left;
  }
+ .priceTable li>p:first-of-type{
+    height:120px;  
+ }
  
 @media (max-width: 685px) {
  .priceTable ul li:first-child .priceAbout,
@@ -457,7 +460,7 @@
  }
  .emailInput {
      float: left;
-     height: 60px;
+     height: 34px;
      width: calc(70% - 40px);
      padding: 5px 0 5px 40px;
      border: 2px solid #E1E8EE;

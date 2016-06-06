@@ -44,6 +44,7 @@ function sameHeight(block1, block2) {
    } else {
       block1.outerHeight(block2.outerHeight());
    }
+   console.log(block1.outerHeight() + " : " + block2.outerHeight());
 }
 
 function jsonToDataPoints(axisX, axisY, labelFormat) {
@@ -218,7 +219,7 @@ $(document).ready(function() {
          lineThickness: 2,
          markerBorderColor: "#ffffff",
          markerColor: "#e1e8ee",
-        markerSize: 10,
+         markerSize: 10,
          markerBorderThickness: 2,
          mouseover: onMouseover,
 
@@ -311,11 +312,7 @@ $(document).ready(function() {
       }
    });
    //END OF MOBILE BUTTON
-   
-   sameHeight($('.emailInput'), $('.emailButton'));
-	   
-   maxHeightOfElements($('.priceTable li>p:first-of-type'));
-
+   	   
    verticalAlignThis($('.price'));
    verticalAlignThis($('.imageContainer img'));
    verticalAlignThis($('.copyright p'));
@@ -339,28 +336,18 @@ $(document).ready(function() {
          marginTop: heightFirstDiv
       });
    }
+   //sameHeight($('.emailInput'), $('.emailButton'));
+
 });
 
 $(window).resize(function() {
    var windowWidth = window.innerWidth;
-   verticalAlignThis($('.copyright p')); 
-   sameHeight($('.emailInput'), $('.emailButton'));
+   //verticalAlignThis($('.copyright p')); 
 
-      maxHeightOfElements($('.priceTable li>p:first-of-type'));
-
-   if(windowWidth>900){
-	   
-      $('.priceTable ul li:nth-child(2)').children('p').css({
-         height: $('.priceTable ul li:first-child p').height()
-      });
-      
-      //verticalAlignThis($('.price'));
-   }
-   else if ((windowWidth <= 900) && (windowWidth > 641)) {
+  if ((windowWidth <= 900) && (windowWidth > 640)) {
 
       var heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
 
-	  
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
       });
@@ -369,10 +356,18 @@ $(window).resize(function() {
       });
 
    } else if (windowWidth <= 640) {
+      heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + 20;
 
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
       });
+      
+      $('.priceTable ul li:last-child').css({
+         marginTop: 20
+      });
 
    }
+   
+      //sameHeight($('.emailInput'), $('.emailButton'));
+
 });
