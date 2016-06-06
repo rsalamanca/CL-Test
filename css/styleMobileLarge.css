@@ -476,14 +476,12 @@ width: calc(100% - 130px);
      font-family: SFDTRegularItalic;
      src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_RegularItalic.ttf);
  }
-@media (max-width: 1330px) {
+@media (max-width: 1370px) {
    .price, .priceAbout{
       width:100% !important;  
-      clear:both !important;
       margin: auto;
       text-align: center;
    }
    .priceAbout{
-      padding:0;  
    }
 }

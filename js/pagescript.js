@@ -9,20 +9,32 @@ function maxNumber(arrayNumbers) {
    }
  
 function maxHeightOfElements(className) {
-   var highest = -1;
+   var highest = 0;
    var i = 0;
    
    className.each(function() {
-      if ($(this).height() > highest) {
-         highest = $(this).height();
+      if ($(this).innerHeight() > highest) {
+         highest = $(this).innerHeight();
       }
       i++;
    });
    
    className.each(function(){
-      if ($(this).height() < highest){
-         $(this).height(highest);
+      if ($(this).innerHeight() < highest){
+         $(this).innerHeight(highest);
+		 	     alert('yes');
+
+	  }else{
+		  
+	     alert('no');
 	  }
+   });
+}
+
+function verticalAlignThis(alignThis) {
+   console.log("Parent: " + alignThis.parent().height() + " This: " + alignThis.height());
+   alignThis.css({
+      marginTop: (alignThis.parent().height() - alignThis.height()) / 2
    });
 }
 
@@ -101,12 +113,6 @@ function verticalLineChart(arrayDataPoints, canvasChart) {
       canvasChart.options.data.push(dataInsert[i]);
    }
 };
-
-function verticalAlignThis(alignThis) {
-   alignThis.css({
-      marginTop: (alignThis.parent().height() - alignThis.height()) / 2
-   });
-}
 
 $(document).ready(function() {
    var windowWidth = window.innerWidth;
@@ -337,7 +343,10 @@ $(document).ready(function() {
 
 $(window).resize(function() {
    var windowWidth = window.innerWidth;
-   verticalAlignThis($('.copyright p'));
+   verticalAlignThis($('.copyright p')); 
+   sameHeight($('.emailInput'), $('.emailButton'));
+
+      maxHeightOfElements($('.priceTable li>p:first-of-type'));
 
    if(windowWidth>900){
 	   
@@ -345,21 +354,19 @@ $(window).resize(function() {
          height: $('.priceTable ul li:first-child p').height()
       });
       
-	  sameHeight($('.emailInput'), $('.emailButton'));
-      verticalAlignThis($('.price'));
+      //verticalAlignThis($('.price'));
    }
    else if ((windowWidth <= 900) && (windowWidth > 641)) {
 
       var heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
 
+	  
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
       });
       $('.priceTable ul li:last-child').css({
          marginTop: heightFirstDiv
       });
-
-      sameHeight($('.emailInput'), $('.emailButton'));
 
    } else if (windowWidth <= 640) {
 
