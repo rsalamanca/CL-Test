@@ -384,6 +384,18 @@
     left: 0;
     width:calc(100% - 66px);
  }
+ 
+  .priceTable ul li:first-child .price,.priceTable ul li:last-child .price,.priceTable ul li:nth-child(2) .price{
+    margin-top: 0;
+ }
+ 
+ .priceTable ul li:nth-child(2) p{
+    height: 'auto'
+ }
+ .priceTable ul li:last-child{
+	margin-top:20;
+ }
+ 
  .priceTable hr {
      width: calc(100% + 59px);
      margin-left: -30px;

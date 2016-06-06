@@ -379,6 +379,7 @@
      overflow: auto;
      float:left;
  }
+ 
 @media (max-width: 685px) {
  .priceTable ul li:first-child .priceAbout,
  .priceTable ul li:last-child .priceAbout{
@@ -396,6 +397,15 @@
     left: 0;
     width:calc(100% - 66px);
  }
+
+ .priceTable ul li:first-child .price,.priceTable ul li:last-child .price,.priceTable ul li:nth-child(2) .price{
+    margin-top: 0;
+ }
+ 
+ .priceTable ul li:nth-child(2) p{
+    height: 'auto'
+ }
+ 
  .priceTable hr {
      width: calc(100% + 59px);
      margin-left: -30px;

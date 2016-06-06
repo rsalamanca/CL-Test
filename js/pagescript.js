@@ -8,16 +8,22 @@ function maxNumber(arrayNumbers) {
       return highest;
    }
  
-function maxNumberElement(className) {
+function maxHeightOfElements(className) {
    var highest = -1;
    var i = 0;
+   
    className.each(function() {
-      if ($(this).outerHeight() > highest) {
-         highest = $(this).outerHeight();
+      if ($(this).height() > highest) {
+         highest = $(this).height();
       }
       i++;
    });
-   return highest;
+   
+   className.each(function(){
+      if ($(this).height() < highest){
+         $(this).height(highest);
+	  }
+   });
 }
 
 function sameHeight(block1, block2) {
@@ -301,29 +307,15 @@ $(document).ready(function() {
    //END OF MOBILE BUTTON
    
    sameHeight($('.emailInput'), $('.emailButton'));
-
-  $('.priceTable li>p').each(function(){
-	   alert($(this).outerHeight());
-	   });
-	   alert(maxNumberElement($('.priceTable li>p:first-of-type')));
 	   
-   $('.priceTable li>p:first-of-type').height(maxNumberElement($('.priceTable li>p:first-of-type')));
+   maxHeightOfElements($('.priceTable li>p:first-of-type'));
 
    verticalAlignThis($('.price'));
    verticalAlignThis($('.imageContainer img'));
    verticalAlignThis($('.copyright p'));
    
-   
    if ((windowWidth <= 900) && (windowWidth > 641)) {
-      //TO CSS
-      $('.priceTable ul li:nth-child(2)').children('p').css({
-         height: 'auto'
-      });
-      //TO CSS
-      $('.priceTable ul li:nth-child(2) .price').css({
-         marginTop: 0
-      });
-      
+
       var heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
 
       $('.priceTable ul li:first-child').css({
@@ -332,41 +324,14 @@ $(document).ready(function() {
       $('.priceTable ul li:last-child').css({
          marginTop: heightFirstDiv
       });
-	  //TO CSS
-      $('.priceTable ul li:first-child .price').css({
-         marginTop: 0
-      });
-	  //TO CSS
-      $('.priceTable ul li:last-child .price').css({
-         marginTop: 0
-      });
+	  
    } else if (windowWidth <= 640) {
 
-      $('.priceTable ul li:nth-child(2)').children('p').css({
-         height: 'auto'
-      });
-	  //TO CSS
-      $('.priceTable ul li:nth-child(2) .price').css({
-         marginTop: 0
-      });
-
       heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + 20;
-      //TO CSS
-      $('.priceTable ul li:first-child .price').css({
-         marginTop: 0
-      });
-      //TO CSS
-      $('.priceTable ul li:last-child .price').css({
-         marginTop: 0
-      });
 
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
       });
-      //TO CSS
-      $('.priceTable ul li:last-child').css({
-         marginTop: 20
-      })
    }
 });
 
@@ -386,14 +351,6 @@ $(window).resize(function() {
    else if ((windowWidth <= 900) && (windowWidth > 641)) {
 
       var heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + parseInt($('.priceTable ul li:first-child').css('margin-right'));
-      //TO CSS
-      $('.priceTable ul li:nth-child(2)').children('p').css({
-         height: 'auto'
-      });
-	  //TO CSS
-      $('.priceTable ul li:nth-child(2) .price').css({
-         marginTop: 0
-      });
 
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
@@ -401,42 +358,14 @@ $(window).resize(function() {
       $('.priceTable ul li:last-child').css({
          marginTop: heightFirstDiv
       });
-	  //TO CSS
-      $('.priceTable ul li:first-child .price').css({
-         marginTop: 0
-      });
-	  //TO CSS
-      $('.priceTable ul li:last-child .price').css({
-         marginTop: 0
-      });
+
       sameHeight($('.emailInput'), $('.emailButton'));
 
    } else if (windowWidth <= 640) {
-	  //TO CSS
-      $('.priceTable ul li:nth-child(2)').children('p').css({
-         height: 'auto'
-      });
-	  //TO CSS
-      $('.priceTable ul li:nth-child(2) .price').css({
-         marginTop: 0
-      });
-
-      heightFirstDiv = $('.priceTable ul li:nth-child(2)').outerHeight() + 20;
-	  //TO CSS
-      $('.priceTable ul li:first-child .price').css({
-         marginTop: 0
-      });
-	  //TO CSS
-      $('.priceTable ul li:last-child .price').css({
-         marginTop: 0
-      });
 
       $('.priceTable ul li:first-child').css({
          marginTop: heightFirstDiv
       });
-	  //TO CSS
-      $('.priceTable ul li:last-child').css({
-         marginTop: 20
-      })
+
    }
 });
