@@ -26,7 +26,6 @@
 #slidess li {
   width: 100%;
   height: auto;
-
   float: left;
   text-align: center;
   position: relative;
@@ -44,7 +43,6 @@
   margin: 0 auto;
   display: block;
   position: absolute;
-  top:0;
   z-index:1;
 }
 #buttons{
@@ -74,11 +72,11 @@ margin-right:70px;
 float:right;
     width: 16px;
     height: 28px;
-    background: url('./images/arrowRight.png') no-repeat;
+    background: url('../images/arrowRight.png') no-repeat;
     background-size: cover;
 }
 a#next:hover {
-     background: url('./images/arrowHoverRight.png') no-repeat;
+     background: url('../images/arrowHoverRight.png') no-repeat;
      background-size: cover;
 }
 .slideContentContainer{

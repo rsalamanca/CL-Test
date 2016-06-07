@@ -128,8 +128,7 @@
     background-position: center;
     width:50px;
     height:50px;
-	left:50%;
-	right:50%;
+    left: calc(50% - 25px);
     border-radius:100px;
     box-shadow: 0px 0px 15px grey;
     transition: background 0.5s;
@@ -154,6 +153,167 @@
      font-size: 1.5em;
      line-height: 1.5em;
      color: #43484C;
+ }
+  p.author {
+     font-size: 1em;
+     color: #43484D;
+     padding-bottom:0;
+ }
+  p.authorAbout {
+     width: 200px;
+     color: #86939E;
+     font-size: .9em;
+	      font-family: SFDThin, arial;
+     letter-spacing: 1px;
+     line-height: 25px;
+  }
+   .licensePurchase {
+     background-color: #F4F4F4;
+     padding: 70px 0 50px 0;
+ }
+ .priceTable {
+     width: 80%;
+     margin: 50px auto 0 auto;
+     overflow: auto;
+     padding-bottom: 5px;
+     height: auto;
+ }
+ .priceTable p {
+     font-family: SFDThin, arial;
+     line-height: 25px;
+ }
+ .priceTable .selected {
+     border: 2px solid rgba(53,142,215,0.21);
+     position: relative;
+ }
+ .toSerif {
+     font-family: serif;
+ }
+ #outer {
+     position: absolute;
+     width: 70px;
+     height: 50px;
+     top: 0px;
+     right: 0px;
+     overflow: hidden;
+     border-radius: 3px;
+     z-index: 1
+ }
+  #inner {
+     transform: rotate(45deg);
+     -ms-transform: rotate(45deg);
+     -webkit-transform: rotate(45deg);
+     -o-transform: rotate(45deg);
+     -moz-transform: rotate(45deg);
+     background-color: #eaf3fb;
+     width: 50px;
+     height: 50px;
+     top: -25px;
+     left: 50px;
+     position: relative;
+ }
+ #outer span {
+     position: absolute;
+     right: 7px;
+     top: 2px;
+     z-index: 2;
+     color: #86939e;
+     font-style: italic;
+ }
+  .priceTable ul {
+     width: 100%;
+    overflow: auto;
+    height:auto;
+	    padding-bottom:15px;
+  }
+ .priceTable ul li {
+     padding: 30px;
+     background-color: #ffffff;
+     border-radius: 5px;
+     box-shadow: 1px 1px 4px #cccccc;
+     overflow: auto;
+     border-top: 0px solid #fff;
+     border-bottom: 0px solid #fff;
+     height:auto;
+    box-shadow:0px 0px 0px #888888;
+    transition:box-shadow 0.5s, border-bottom 0.5s;   
+ }
+  .priceTable ul li:hover{
+    box-shadow: 10px 10px 5px #888888;
+    transition:box-shadow 0.5s, border-bottom 0.5s;   
+ }
+  .priceTable hr {
+     width: calc(100% + 59px);
+     margin-left: -30px;
+     height: 0px;
+     border: none;
+     border-bottom: 1px solid #CECACA;
+ }
+  .priceInfo {
+     width:100%;
+     overflow: auto;
+     height:auto;
+ }
+  .price {
+     color: #000000;
+     position: relative;
+     width:auto;
+ }
+  .price sup{
+    color:#50555B;
+ }
+ .price.free {
+     color: #7DC855;
+ }
+  .priceAbout{
+    overflow:auto;
+    line-height: 20px;
+    width:166px;
+    text-align: center;
+  }
+   .priceTable button {
+     clear: both;
+     width: 100%;
+     height: 50px;
+ }
+ 
+  .emailSection {
+     text-align: center;
+     width: 380px;
+     margin: 0 auto;
+     padding: 50px 0;
+ }
+  .emailSection p {
+     line-height: 32px;
+ }
+ 
+  .emailInput {
+     padding: 5px 0 5px 40px;
+     border: 2px solid #E1E8EE;
+	 border-radius: 5px 0px 0px 5px;
+     background: url('../images/emailIcon.png');
+     background-repeat: no-repeat;
+     background-size: 20px 20px;
+     background-position: 10px center;
+	 height:30px;
+     z-index: 1;
+ }
+  .emailInput[type=text] {
+     color: #86939E;
+ }
+  .emailButton {
+     clear: both;
+     margin-left: -3px;
+     border-style: none;
+     border-radius: 0 5px 5px 0;
+	 height:44px;
+     color: #ffffff;
+     z-index: 2;
+	 border-radius: 0px 5px 5px 0px;
+ }
+ .emailInput,
+ .emailButton {
+     margin-top: 0px;
  }
 #footerNav {
      width: 50%;
