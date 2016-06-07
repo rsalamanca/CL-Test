@@ -1,0 +1,87 @@
+#carousel {
+    position: relative;
+    width: 75%;
+    margin: 0 auto;
+    padding: 50px 0px;
+    z-index: 999;
+}
+
+#slidess {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  margin:0 auto;
+}
+
+#slidess ul {
+  list-style: none;
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#slidess li {
+  width: 100%;
+  height: auto;
+
+  float: left;
+  text-align: center;
+  position: relative;
+  font-family: lato, sans-serif;
+}
+
+.slide{
+   width:100%;
+}
+
+/* Styling for prev and next buttons */
+
+.btn-bar {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  position: absolute;
+  top:0;
+  z-index:1;
+}
+#buttons{
+   overflow:auto;
+}
+
+#buttons a {
+  display: block;
+  text-decoration: none;
+  
+}
+a#prev{
+margin-left:70px;
+  float:left;
+    width: 16px;
+    height: 28px;
+    background: url('../images/arrowLeft.png') no-repeat;
+    background-size: cover;
+
+}
+a#prev:hover{
+     background: url('../images/arrowHoverLeft.png') no-repeat;
+     background-size: cover;
+}
+a#next{
+margin-right:70px;
+float:right;
+    width: 16px;
+    height: 28px;
+    background: url('./images/arrowRight.png') no-repeat;
+    background-size: cover;
+}
+a#next:hover {
+     background: url('./images/arrowHoverRight.png') no-repeat;
+     background-size: cover;
+}
+.slideContentContainer{
+  overflow:auto;
+}
+  

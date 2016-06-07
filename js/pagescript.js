@@ -355,11 +355,6 @@ $(document).ready(function() {
 $(window).resize(function() {
    var windowWidth = window.innerWidth;
    var heightFirstDiv = 0;
-   
-   $('#slidess').width($('#carousel').width());
-   $('#slidess ul').css({left:$('#carousel').width()*(-1)});
-   $('#slidess ul').width($('#carousel').width()*$('.slide').length);
-   $('.slide').width($('#carousel').width());
 
    if ((windowWidth <= 900) && (windowWidth > 640)) {
 

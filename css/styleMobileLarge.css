@@ -419,69 +419,6 @@ width: calc(100% - 130px);
  .copyright {
      text-align: right;
  }
- .copyright p {
-     color: #E6E9EB;
-     font-size:0.7em;
- }
- .tooltips {
-     position: absolute;
-     color: #fff;
-     box-shadow: 1px 1px 4px #cccccc;
- }
- .circleInfo {
-     display: inline-block;
-     padding: 2px 8px;
-     border-radius: 50%;
-     height: auto;
-     width: auto;
-     margin-right: 10px;
-     background-color: #64c1ba;
-     border: 2px solid #75c7c1;
- }
- .jan {
-     padding: 20px;
-     background-color: #838CC7;
-     color: #fff;
-     border-radius: 10px;
-     top: 0px;
-     left: -100%;
-     z-index: 1;
- }
- .jan h3 {
-     padding: 0;
- }
- @font-face {
-     font-family: SFDBold;
-     src: url(fonts/YosemiteSanFranciscoFont/System_San_Francisco_Display_Bold.ttf);
- }
- @font-face {
-     font-family: SFDRegular;
-     src: url(fonts/YosemiteSanFranciscoFont/System_San_Francisco_Display_Regular.ttf);
- }
- @font-face {
-     font-family: SFDThin;
-     src: url(fonts/YosemiteSanFranciscoFont/System_San_Francisco_Display_Thin.ttf);
- }
- @font-face {
-     font-family: SFDUltrathin;
-     src: url(fonts/YosemiteSanFranciscoFont/System_San_Francisco_Display_Ultrathin.ttf);
- }
- @font-face {
-     font-family: SFDTBoldItalic;
-     src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_BoldItalic.ttf);
- }
- @font-face {
-     font-family: SFDTMedium;
-     src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_Medium.ttf);
- }
- @font-face {
-     font-family: SFDTMediumItalic;
-     src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_MediumItalic.ttf);
- }
- @font-face {
-     font-family: SFDTRegularItalic;
-     src: url(fonts/YosemiteSanFranciscoFont/text/System_San_Francisco_Text_RegularItalic.ttf);
- }
 @media (max-width: 1370px) {
    .price, .priceAbout{
       width:100% !important;  

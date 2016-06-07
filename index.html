@@ -9,103 +9,17 @@
    <link rel="stylesheet" type="text/css" media="only screen and (min-width:641px) and (max-width:900px)" href="css/styleMobileMed.css">
    <link rel="stylesheet" type="text/css" media="only screen and (min-width:901px)" href="css/styleMobileLarge.css">
    <link rel="stylesheet" type="text/css" href="css/chartStyle.css">
-
-
+   <link rel="stylesheet" type="text/css" href="css/sliderStyles.css">
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   
    <script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
    <script type="text/javascript" src="js/canvasjs.min.js"></script>
    <script type="text/javascript" src="js/jquery-ui.js"></script>
    <script type="text/javascript" src="js/pagescript.js"></script>
-   
-   <style>
+   <script type="text/javascript" src="js/slider.js"></script>
 
-#carousel {
-    position: relative;
-    width: 75%;
-    margin: 0 auto;
-    padding: 50px 0px;
-    z-index: 999;
-}
 
-#slidess {
-  overflow: hidden;
-  position: relative;
-  height: auto;
-  margin:0 auto;
-}
-
-#slidess ul {
-  list-style: none;
-  width: 100%;
-  height: auto;
-
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-#slidess li {
-  width: 100%;
-  height: auto;
-
-  float: left;
-  text-align: center;
-  position: relative;
-  font-family: lato, sans-serif;
-}
-
-.slide{
-   width:100%;
-}
-
-/* Styling for prev and next buttons */
-
-.btn-bar {
-  width: 100%;
-  margin: 0 auto;
-  display: block;
-  position: absolute;
-  top:0;
-  z-index:1;
-}
-#buttons{
-   overflow:auto;
-}
-
-#buttons a {
-  display: block;
-  text-decoration: none;
-  
-}
-a#prev{
-margin-left:70px;
-  float:left;
-    width: 16px;
-    height: 28px;
-    background: url('./images/arrowLeft.png') no-repeat;
-    background-size: cover;
-
-}
-a#prev:hover{
-     background: url('./images/arrowHoverLeft.png') no-repeat;
-     background-size: cover;
-}
-a#next{
-margin-right:70px;
-float:right;
-    width: 16px;
-    height: 28px;
-    background: url('./images/arrowRight.png') no-repeat;
-    background-size: cover;
-}
-a#next:hover {
-     background: url('./images/arrowHoverRight.png') no-repeat;
-     background-size: cover;
-}
-.slideContentContainer{
-  overflow:auto;
-}
-</style>
 </head>
 <body>
    <div class="mainContainer">
@@ -248,92 +162,5 @@ a#next:hover {
       </div>
    </div>
 <script type="text/javascript" src="js/Slides-SlidesJS-3/source/jquery.slides.js"></script>
-<script>
-   
-/*a simple function to click next link
-a timer will call this function, and the rotation will begin*/
-function rotate() {
-    $('#next').click();
-}
-
-function resetSlides(container,item_width) {
-   //and adjust the container so current is in the frame
-   container.css({
-      'left': -1 * item_width
-   });
-}
-
-function buttonClickAction(e,item_width,container,elm,next,previous){		   
-        
-   if (container.is(':animated')) {
-      return false;
-   }
-   //previous Button
-   if (e.target.id == previous) {
-      container.stop().animate({
-         'left': 0
-      }, 1500, function () {
-         container.find(elm + ':first').before(container.find(elm + ':last'));
-         resetSlides(container,item_width);
-      });
-   }
-   
-   //next Button
-   if (e.target.id == next) {
-      container.stop().animate({
-         'left': item_width * -2
-      }, 1500, function () {
-         container.find(elm + ':last').after(container.find(elm + ':first'));
-         resetSlides(container,item_width);
-      });
-   }
-   
-   //prevents from going to the top of the page
-   e.preventDefault();
-
-   //cancel the link behavior  
-   return false;
-}
-
-$(document).ready(function(){
-   //rotation speed and timer
-   
-   var speed = 150000;
-    
-   var run = setInterval(rotate, speed);
-   var slides = $('.slide');
-   var container = $('#slidess ul');
-   var elm = container.find(':first-child').prop("tagName");
-   var item_width = $('#carousel').width();
-   var previous = 'prev'; //id of previous button
-   var next = 'next'; //id of next button
-   slides.width(item_width); //set the slides to the correct pixel width
-   container.parent().width(item_width);
-   container.width(slides.length * item_width); //set the slides container to the correct total width
-   container.find(elm + ':first').before(container.find(elm + ':last'));
-   resetSlides(container,item_width);
-    
-   $(window).resize(function () {
-      item_width = $('#carousel').width();
-		   
-      $('#buttons a').click(function (e) {
-         buttonClickAction(e,item_width,container,elm,next,previous);
-      });
-   });
-
-   //if user clicked on prev button
-   $('#buttons a').click(function (e) {
-      buttonClickAction(e,item_width,container,elm,next,previous);
-   });
-
-   //if mouse hover, pause the auto rotation, otherwise rotate it    
-   container.parent().mouseenter(function () {
-      clearInterval(run);
-   }).mouseleave(function () {
-      run = setInterval(rotate, speed);
-   });
-});
-
-</script>
 <body>
 </html>
