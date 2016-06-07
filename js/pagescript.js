@@ -214,7 +214,7 @@ $(document).ready(function() {
          mouseover: onMouseover,
 
          dataPoints: dataPointsValue
-      }, {
+      }/*, {
       //Fill area of chart
          type: "area",
          color: "#F9F9F9",
@@ -225,7 +225,7 @@ $(document).ready(function() {
          markerSize: 0,
 
          dataPoints: dataPointsValue
-      }]
+      }*/]
    });
 
    verticalLineChart(chart.options.data[1].dataPoints, chart);
@@ -249,10 +249,12 @@ $(document).ready(function() {
             //console.log("REACHED END LOWER");
             chart.options.axisX.viewportMaximum = 12;
          //If statement so that the scroll wheel doesn't go above the last value.
-         } else if (chart.options.axisX.viewportMaximum >= (chart.options.data[0].dataPoints.length - 12)) {
-            //console.log("REACHED END TOP");
+         } else if (chart.options.axisX.viewportMaximum >= (chart.options.data[0].dataPoints.length - 6)) {
+            console.log("REACHED END TOP:" + chart.options.axisX.viewportMaximum);
+            console.log("L" + chart.options.data[0].dataPoints.length);
+			
             chart.options.axisX.viewportMaximum = chart.options.data[0].dataPoints.length - 1;
-            chart.options.axisX.viewportMinimum = chart.options.data[0].dataPoints.length - 12;
+         //   chart.options.axisX.viewportMinimum = chart.options.data[0].dataPoints.length - 12;
          //If statement so that the scroll wheel will update the chart to the values in between.
          } else {
             //console.log("Working inbetween");
