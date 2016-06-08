@@ -214,7 +214,7 @@ $(document).ready(function() {
          mouseover: onMouseover,
 
          dataPoints: dataPointsValue
-      }/*, {
+      }, {
       //Fill area of chart
          type: "area",
          color: "#F9F9F9",
@@ -223,9 +223,11 @@ $(document).ready(function() {
          tooltipContent: null,
          highlightEnabled: false,
          markerSize: 0,
+         markerBorderThickness: 0,
+
 
          dataPoints: dataPointsValue
-      }*/]
+      }]
    });
 
    verticalLineChart(chart.options.data[1].dataPoints, chart);
